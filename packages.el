@@ -55,4 +55,5 @@
 (package! counsel-tramp)
 (package! expand-region)
 (package! buffer-move)
+(package! conda)
 (package! flycheck :disable t)
