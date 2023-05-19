@@ -171,11 +171,6 @@
  (setq tramp-shell-prompt-pattern "\\(?:^\\|\r\\)[^]#$%>\n]*#?[]#$%>].* *\\(^[\\[[0-9;]*[a-zA-Z] *\\)*")
  )
 
-;; (use-package! python-black
-;;   :demand t
-;;   :after python)
-;; (add-hook! 'python-mode-hook #'python-black-on-save-mode)
-
 
 (setq auto-save-default t
       truncate-string-ellipsis "…"
@@ -199,10 +194,10 @@
 ;; Flycheck shouls not be enabled for vterm.
 ;; For some reasons, sometimes I found it enabled, so here I force it
 ;; not to be enabled.
-(after! flycheck
-  (use-package! flycheck
-    :init
-    (setq flycheck-global-modes '(not vterm-mode))))
+;; (after! flycheck
+;;   (use-package! flycheck
+;;     :init
+;;     (setq flycheck-global-modes '(not vterm-mode))))
 
 
 ;; (after! python
@@ -317,38 +312,35 @@
         TeX-save-query nil
         TeX-show-compilation t))
 
-(use-package! julia-snail
-  :after julia
-  (setq julia-snail-use-emoji-mode-lighter t)
-  :config
-  :ensure vterm
-  :hook (julia-mode . julia-snail-mode))
+;; (use-package! julia-snail
+;;   :after julia
+;;   (setq julia-snail-use-emoji-mode-lighter t)
+;;   :config
+;;   :ensure vterm
+;;   :hook (julia-mode . julia-snail-mode))
 
-(after! julia-snail-mode
-  (map! :map julia-snail-mode-map "C-c C-c" #'julia-snail-send-buffer-file))
+;; (after! julia-snail-mode
+;;   (map! :map julia-snail-mode-map "C-c C-c" #'julia-snail-send-buffer-file))
 
 ;; ((julia-mode . ((julia-snail-extra-args . ("--threads" "4")))))
 
-(add-hook! 'julia-mode-hook 'julia-snail-mode)
-;; (add-hook! 'julia-mode-hook 'julia-snail)
+;; (add-hook! 'julia-mode-hook 'julia-snail-mode)
+;;(add-hook! 'julia-mode-hook 'julia-snail)
+
+(setq lsp-julia-package-dir nil)
+(setq lsp-diagnostics-provider :none)
+(setq lsp-ui-sideline-enable nil)
 
 ;; (require 'julia-formatter)
 ;; (add-hook! 'julia-mode-hook #'julia-formatter-mode)
+;; (require 'julia-formatter)
+;; (add-hook! 'julia-mode-hook #'julia-formatter-mode)
+
+
+;; load this file after downloading this package (or installing with straight.el)
+;; (require 'julia-formatter)
+;; load aggressive indent and setup appropiate variables
+;;(julia-formatter-setup-hooks)
 
 ;; ;; (recommended) load the server in the background after startup
-;; ;;(add-hook! 'after-init-hook #'julia-formatter--ensure-server)
-;; (add-hook 'julia-formatter-mode-hook #'aggressive-indent)
-
-
-;; (defvar bootstrap-version)
-;; (let ((bootstrap-file
-;;        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
-;;       (bootstrap-version 6))
-;;   (unless (file-exists-p bootstrap-file)
-;;     (with-current-buffer
-;;         (url-retrieve-synchronously
-;;          "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
-;;          'silent 'inhibit-cookies)
-;;       (goto-char (point-max))
-;;       (eval-print-last-sexp)))
-;;   (load bootstrap-file nil 'nomessage))
+;; (add-hook! 'after-init-hook #'julia-formatter--ensure-server)

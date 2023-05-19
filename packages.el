@@ -57,16 +57,17 @@
 (package! buffer-move)
 ;; (package! conda)
 (package! flycheck :disable t)
-;; (package! julia-snail :recipe (:host github
-;;                                :repo "gcv/julia-snail"
-;;                                :files ("*")
-;;                                ))
-(package! julia-snail)
+(package! julia-snail :recipe (:host github
+                               :repo "gcv/julia-snail"
+                               :files ("*")
+                               ))
+;;(package! julia-snail)
 
-(package! julia-mode) ;; you probably already have this line
-(package! julia-formatter
-  :recipe (:host codeberg :repo "FelipeLema/julia-formatter.el"
-           :files ( "julia-formatter.el" ;; main script executed by Emacs
-                    "formatter_service.jl" ;; script executed by Julia
-                    "Manifest.toml" "Project.toml" ;; project files
-                    )))
+(package! julia-mode)
+;; you probably already have this line
+;; (package! julia-formatter
+;;   :recipe (:host codeberg :repo "FelipeLema/julia-formatter.el"
+;;            :files ( "julia-formatter.el" ;; main script executed by Emacs
+;;                     "formatter_service.jl" ;; script executed by Julia
+;;                     "Manifest.toml" "Project.toml" ;; project files
+;;                     )))
